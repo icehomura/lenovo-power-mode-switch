@@ -1,0 +1,36 @@
+[package]
+name = "lenovo-power-mode-switch"
+version = "0.1.0"
+description = "Lenovo Power Mode Switch"
+authors = ["icehomura"]
+edition = "2021"
+default-run = "lenovo-power-mode-switch"
+
+[[bin]]
+name = "lenovo-power-mode-switch"
+path = "src/main.rs"
+
+[lib]
+name = "lenovo_power_mode_switch_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-autostart = "2"
+tauri-plugin-global-shortcut = "2"
+tauri-plugin-shell = "2"
+tauri-plugin-single-instance = "2"
+tauri-plugin-store = "2"
+tauri-plugin-window-state = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+libloading = "0.8"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+panic = "abort"

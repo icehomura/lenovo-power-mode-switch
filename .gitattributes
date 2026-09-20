@@ -1,0 +1,15 @@
+# Keep the repository byte-identical regardless of the machine's
+# core.autocrlf setting.
+* text=auto eol=lf
+
+# The isolated Lenovo runtime must never be line-ending converted — a single
+# rewritten byte corrupts a PE image and the app would fail to load it.
+*.dll binary
+*.exe binary
+*.ico binary
+*.icns binary
+*.png binary
+
+# Windows batch files need CRLF to run reliably under cmd.exe.
+*.bat text eol=crlf
+*.cmd text eol=crlf

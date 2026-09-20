@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2.11.3",
+  "productName": "Lenovo Power Mode Switch",
+  "version": "0.1.0",
+  "identifier": "com.icehomura.lenovo-power-mode-switch",
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "pnpm build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "withGlobalTauri": false,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Lenovo Power Mode Switch",
+        "width": 470,
+        "height": 380,
+        "minWidth": 380,
+        "minHeight": 320,
+        "resizable": true,
+        "decorations": false,
+        "backgroundColor": "#1a1a2e",
+        "center": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' asset: https://asset.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis"],
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.ico"
+    ],
+    "resources": {
+      "resources/*": ""
+    }
+  }
+}

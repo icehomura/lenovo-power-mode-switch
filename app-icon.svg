@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Lenovo Power Mode switcher - application icon.
+
+  Design notes:
+   - Rounded-square plate on the app's dark navy (#252547 -> #0e0e1a).
+   - The bolt carries the four mode colours top-to-bottom (intelligent blue ->
+     saving green -> performance amber -> geek red), so the icon reads as
+     "one bolt, four power profiles".
+   - Deliberately NO glow / blur. An earlier version blurred a copy of the
+     bolt for a halo; because that copy sat inside a scale(30) group the blur
+     radius was multiplied by 30 and washed out the whole plate. A glow is
+     also just noise at 32px - contrast is what makes a small icon readable.
+   - The bolt spans ~56% of the height, inside the safe area that Windows and
+     macOS crop/pad.
+  Generated with: pnpm tauri icon app-icon.svg
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="plate" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#2b2b52"/>
+      <stop offset="0.55" stop-color="#1a1a2e"/>
+      <stop offset="1" stop-color="#0d0d18"/>
+    </linearGradient>
+
+    <!-- The four mode accent colours, in the order the UI lists them. -->
+    <linearGradient id="bolt" x1="0.15" y1="0" x2="0.85" y2="1">
+      <stop offset="0.00" stop-color="#4A9EFF"/>
+      <stop offset="0.34" stop-color="#34C759"/>
+      <stop offset="0.68" stop-color="#FF9F0A"/>
+      <stop offset="1.00" stop-color="#FF3B30"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Plate -->
+  <rect x="0" y="0" width="1024" height="1024" rx="228" ry="228" fill="url(#plate)"/>
+
+  <!-- Hairline inner rim so the plate does not read as a flat blob. -->
+  <rect x="11" y="11" width="1002" height="1002" rx="218" ry="218"
+        fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="7"/>
+
+  <!-- Bolt.
+       The Material bolt silhouette is drawn ~10 units wide in a 24-unit box,
+       which thins out badly at 32px. Stroking it in the same gradient (round
+       joins) fattens it by ~20% and blunts the tips, which is what makes it
+       survive the small render. -->
+  <g transform="translate(140 140) scale(31)">
+    <path fill="url(#bolt)" stroke="url(#bolt)" stroke-width="1"
+          stroke-linejoin="round" stroke-linecap="round"
+          d="M11 21h-1l1-7H7.5c-.58 0-.57-.32-.38-.66.19-.34.05-.08.07-.12C8.48 10.94 10.42 7.54 13 3h1l-1 7h3.5c.49 0 .56.33.47.51l-.07.15C12.96 17.55 11 21 11 21z"/>
+  </g>
+</svg>

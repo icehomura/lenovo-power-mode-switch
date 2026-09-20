@@ -1,0 +1,33 @@
+# ── Dependencies ──────────────────────────────────────────────────────────
+node_modules/
+
+# ── Build output ──────────────────────────────────────────────────────────
+dist/
+src-tauri/target/
+
+# Tauri regenerates the ACL schemas on every build.
+src-tauri/gen/schemas/
+
+# ── Test artifacts ────────────────────────────────────────────────────────
+coverage/
+*.lcov
+
+# ── Editors / OS ──────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Logs and local env ────────────────────────────────────────────────────
+*.log
+pnpm-debug.log*
+.env
+.env.local
+*.local
+
+# NOTE: src-tauri/resources/*.dll must stay tracked. They are the isolated
+# Lenovo runtime the app loads at startup, they cannot be rebuilt from this
+# repository (the bridge source lives outside it), and the Tauri bundle step
+# copies them next to the executable.
