@@ -28,9 +28,10 @@ impl ShortcutsState {
 }
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Helpers (used in tests; retained for future debug/logging use)
 // ---------------------------------------------------------------------------
 
+#[allow(dead_code)]
 pub(crate) fn format_modifiers(m: Modifiers) -> String {
     let mut parts = Vec::new();
     if m.contains(Modifiers::SHIFT) {
@@ -51,6 +52,7 @@ pub(crate) fn format_modifiers(m: Modifiers) -> String {
     parts.join("+")
 }
 
+#[allow(dead_code)]
 pub(crate) fn format_key(code: Code) -> String {
     match code {
         Code::Digit0 => "0".into(),
@@ -120,6 +122,7 @@ pub(crate) fn format_key(code: Code) -> String {
     }
 }
 
+#[allow(dead_code)]
 pub(crate) fn format_shortcut(s: &Shortcut) -> String {
     let mut parts = Vec::new();
     let mod_str = format_modifiers(s.mods);
